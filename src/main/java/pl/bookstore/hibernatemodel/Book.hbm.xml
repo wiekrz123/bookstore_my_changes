@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-04-16 11:57:09 by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="bookstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="pl.bookstore.hibernatemodel.Book" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="book">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="pl.bookstore.hibernatemodel.Publisher" embed-xml="true" fetch="select" insert="true" name="publisher" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="publisherID" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="isbn" optimistic-lock="true" type="string" unique="false">
+            <column length="13" name="isbn" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="title" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="title" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="price" not-null="true" precision="6"/>
+        </property>
+        <property generated="never" lazy="false" name="amount" optimistic-lock="true" type="int" unique="false">
+            <column name="amount" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="available" optimistic-lock="true" type="boolean" unique="false">
+            <column name="available" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="description" optimistic-lock="true" type="string" unique="false">
+            <column length="16777215" name="description" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="link" optimistic-lock="true" type="string" unique="false">
+            <column name="link" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="orderitems" optimistic-lock="true" sort="unsorted" table="orderitem">
+            <key on-delete="noaction">
+                <column name="bookID" not-null="true"/>
+            </key>
+            <one-to-many class="pl.bookstore.hibernatemodel.Orderitem" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="authors" optimistic-lock="true" sort="unsorted" table="book_author">
+            <key on-delete="noaction">
+                <column name="bookID" not-null="true"/>
+            </key>
+            <many-to-many embed-xml="true" entity-name="pl.bookstore.hibernatemodel.Author" not-found="exception" unique="false">
+                <column name="authorID" not-null="true"/>
+            </many-to-many>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="categories" optimistic-lock="true" sort="unsorted" table="book_category">
+            <key on-delete="noaction">
+                <column name="bookID" not-null="true"/>
+            </key>
+            <many-to-many embed-xml="true" entity-name="pl.bookstore.hibernatemodel.Category" not-found="exception" unique="false">
+                <column name="categoryID" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

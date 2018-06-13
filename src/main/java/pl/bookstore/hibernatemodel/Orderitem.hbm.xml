@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-04-16 11:57:09 by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="bookstore" dynamic-insert="false" dynamic-update="false" mutable="true" name="pl.bookstore.hibernatemodel.Orderitem" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="orderitem">
+        <composite-id class="pl.bookstore.hibernatemodel.OrderitemId" mapped="false" name="id" unsaved-value="undefined">
+            <key-property name="orderId" type="int">
+                <column name="orderID"/>
+            </key-property>
+            <key-property name="bookId" type="int">
+                <column name="bookID"/>
+            </key-property>
+        </composite-id>
+        <many-to-one class="pl.bookstore.hibernatemodel.Book" embed-xml="true" fetch="select" insert="false" name="book" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="bookID" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="pl.bookstore.hibernatemodel.Orderinfo" embed-xml="true" fetch="select" insert="false" name="orderinfo" not-found="exception" optimistic-lock="true" unique="false" update="false">
+            <column name="orderID" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="amount" optimistic-lock="true" type="int" unique="false">
+            <column name="amount" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="price" not-null="true" precision="6"/>
+        </property>
+    </class>
+</hibernate-mapping>

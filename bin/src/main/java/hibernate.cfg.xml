@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<property name="hibernate.generate_statistics">true</property>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">gpklg3RI</property>
+        <property name="hibernate.connection.url">jdbc:mysql://jws-app-mysql:3306/root?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">useryUB</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="current_session_context_class">thread</property>
+        <property name="hibernate.session_factory_name">SessionFactory</property>
+        <mapping resource="pl/bookstore/hibernatemodel/Category.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Deliverer.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Publisher.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Orderinfo.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Statusinfo.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/User.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Author.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Orderitem.hbm.xml"/>
+        <mapping resource="pl/bookstore/hibernatemodel/Book.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
